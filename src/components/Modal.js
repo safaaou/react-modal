@@ -48,8 +48,8 @@ function Modal({showModal,setShowModal}){
   const buttons1 = ["Monday", "tuesday", "wednesday"];
   const buttons2 = ["00:12", "12:23", "23:11","10:46"];
   const modalRef = useRef();
-  //const [statut1, setStatut1] = useState('');
- // const [statut2,setStatut2] = useState('');
+  const [statut1, setStatut1] = useState('');
+  const [statut2,setStatut2] = useState('');
 
   const handleClick = e => {    
     e.preventDefault();  
@@ -99,9 +99,11 @@ function Modal({showModal,setShowModal}){
             </div>
             <div className="modal-body">
                 <FirstTitle name="title 1" />
-                <ButtonList buttons={buttons1} onValue={handleClick}/>
+                <ButtonList buttons={buttons1} onValue={e => setStatut1(e.target.value)}/>
+                {statut1}
                 <SecondTitle name="title 2" />
-                <ButtonList buttons={buttons2} onValue={handleClick}/>
+                <ButtonList buttons={buttons2} onValue={e => setStatut2(e.target.value)}/>
+                {statut2}
             </div>
             <div className="modal-footer">
               <ButtonSubmit name="Confirm" onConfirm={handleConfirm}/>
